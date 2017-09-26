@@ -1,0 +1,50 @@
+.tap-flavor {
+  margin: 20px 0px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.tap-flavor__title {
+  display: inline-flex;
+  -ms-align-items: center;
+  align-items: center;
+  font-size: 25px;
+  height: 100%;
+  border-right: 1px solid black;
+  padding: 0px;
+}
+
+.tap-flavor__title__text {
+  display: block;
+  margin: auto;
+}
+
+.tap-flavor__title__border-right {
+  background-image: url("../images/chalkboard.png");
+  background-size: cover;
+  height: 60px;
+  width: 5px;
+  float: right;
+}
+
+.tap-flavor__ontap {
+  text-align: center;
+  line-height: 1;
+  float: right;
+  height: 100%;
+}
+
+.tap-flavor__ontap__checkbox {
+
+}
+
+.tap-flavor__ontap * {
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.tap-flavor__ontap__label {
+  padding: 8px 0px 0px;
+}

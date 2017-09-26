@@ -1,25 +1,27 @@
 import React, { Component } from 'react'
 import { graphql, gql } from 'react-apollo'
-import Flavor from './Flavor'
+import TapFlavor from './TapFlavor'
 
 class TapList extends Component {
 
   render() {
 
-    if(this.props.onTapFlavorsQuery && this.props.onTapFlavorsQuery.loading) {
+    if(this.props.allFlavorsQuery && this.props.allFlavorsQuery.loading) {
       return <div>Loading...</div>
     }
 
-    if(this.props.onTapFlavorsQuery && this.props.onTapFlavorsQuery.error) {
-      return <div>error{console.log(this.props.onTapFlavorsQuery.error)}</div>
+    if(this.props.allFlavorsQuery && this.props.allFlavorsQuery.error) {
+      return <div>error{console.log(this.props.allFlavorsQuery.error)}</div>
     }
 
-    const flavorsToRender = this.props.onTapFlavorsQuery.allFlavors;
+    const flavorsToRender = this.props.allFlavorsQuery.allFlavors;
+
 
     return (
-      <div>
-        {flavorsToRender.map(flavor => (
-          <Flavor key={flavor.id} flavor={flavor} />
+      <div className="tapList">
+        <h2 className="tapList__title">What's On Tap</h2>
+        {flavorsToRender.map(flavor => flavor.onTap && (
+          <TapFlavor key={flavor.id} flavor={flavor} />
         ))}
       </div>
     )
@@ -28,11 +30,9 @@ class TapList extends Component {
 
 }
 
-const ONTAP_FLAVORS_QUERY = gql`
-  query onTapFlavorsQuery {
-    allFlavors(filter: {
-      onTap: true
-    }) {
+const ALL_FLAVORS_QUERY = gql`
+  query allFlavorsQuery {
+    allFlavors {
       id
       createdAt
       name
@@ -45,4 +45,4 @@ const ONTAP_FLAVORS_QUERY = gql`
   }
 `
 
-export default graphql(ONTAP_FLAVORS_QUERY, { name: 'onTapFlavorsQuery' }) (TapList)
+export default graphql(ALL_FLAVORS_QUERY, { name: 'allFlavorsQuery' }) (TapList)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FlavorList from './FlavorList'
+import LandingPage from './LandingPage'
 import TapList from './TapList'
 import CreateFlavor from './CreateFlavor'
 import Header from './Header'
@@ -7,18 +7,20 @@ import Login from './Login'
 import Search from './Search'
 import LoadData from './LoadData'
 import { Switch, Route } from 'react-router-dom'
+import '../styles/header.css'
 
 class App extends Component {
+
   render() {
     return (
-      <div className='center w85'>
+      <div className='center'>
         <Header />
-        <div className='ph3 pv1'>
+        <div className='content'>
           <Switch>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/search' component={Search}/>
             <Route exact path='/loadData' component={LoadData}/>
-            <Route exact path='/' component={FlavorList}/>
+            <Route exact path='/' component={LandingPage}/>
             <Route exact path='/tapList' component={TapList}/>
             <Route exact path='/create' component={CreateFlavor}/>
           </Switch>

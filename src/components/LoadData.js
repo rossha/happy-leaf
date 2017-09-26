@@ -14,10 +14,8 @@ class LoadData extends Component {
   }
 
   _loadData = function(props) {
-    PREMADE_FLAVORS.map(function(flavor) {
-      const { name, description, special, backgroundColor, icon, onTap } = flavor
-      console.log(flavor);
-      console.log(this);
+    Object.keys(PREMADE_FLAVORS).forEach(function(i) {
+      const { name, description, special, backgroundColor, icon, onTap } = PREMADE_FLAVORS[i]
       props.createFlavorMutation({
         variables: {
           name,
