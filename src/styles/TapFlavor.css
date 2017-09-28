@@ -6,13 +6,15 @@
   font-size: 24px;
 }
 
+.public-tap-flavor {
+  padding: 10px;
+}
+
 .tap-flavor__title {
   display: inline-flex;
   -ms-align-items: center;
   align-items: center;
   font-size: 25px;
-  height: 100%;
-  border-right: 1px solid black;
   padding: 0px;
 }
 

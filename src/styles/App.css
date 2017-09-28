@@ -2,6 +2,10 @@
   box-sizing: initial;
 }
 
+body {
+  background: url("../images/wood.png") repeat-y top left;
+}
+
 body * {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
@@ -9,8 +13,28 @@ body * {
 }
 
 .content {
-  background: url("../images/wood.png") repeat-y top left;
   overflow: auto;
+}
+
+.admin-gear {
+  width: 20px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.public-taplist {
+  padding: 0px 20px 50px;
+}
+
+.public-taplist .tapList {
+  max-width: 750px;
+  margin: 20px auto;
+}
+
+.public-taplist .tapList__title {
+  margin: 10px;
 }
 
 .tapList, .flavorList {
@@ -20,7 +44,7 @@ body * {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 2px 2px 2px #000000;
-  /*border: #393939 solid 5px;*/
+  max-width: 800px;
 }
 
 .tapList__title, .flavorList__title {
@@ -71,6 +95,11 @@ body * {
 .flavor__field {
   text-transform: uppercase;
   font-size: 17px;
+  cursor: pointer;
+}
+
+.flavor__field__label {
+  cursor: default;
 }
 
 .flavor__buttons * {
@@ -85,16 +114,9 @@ body * {
 }
 
 .flavor__field__content * {
+  cursor: pointer;
   -ms-align-items: center;
   align-items: center;
-}
-
-.update-flavor {
-  background-color: white;
-  color: black;
-  padding: 6px;
-  text-align: center;
-  cursor: pointer;
 }
 
 select {
