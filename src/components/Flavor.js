@@ -1,43 +1,80 @@
 import React, { Component } from 'react';
 import { graphql, gql, compose } from 'react-apollo'
+import { debounce } from 'lodash'
 import '../styles/App.css'
 
 class Flavor extends Component {
 
+  constructor() {
+    super();
+    this._updateFlavor = this._updateFlavor.bind(this);
+
+    // Initial State
+    this.state = {
+      flavor: {}
+    };
+  }
+
   _toggleOnTap = function(props) {
-     props.toggleOnTapMutation({
-       variables: {
-         id: props.flavor.id,
-         onTap: !props.flavor.onTap
-       }
-     })
-   }
+    props.toggleOnTapMutation({
+      variables: {
+        id: props.flavor.id,
+        onTap: !props.flavor.onTap
+      }
+    })
+  }
 
-   _handleChange(e, props) {
-     const updatedFlavor = {...props.flavor,
-       [e.target.name]: e.target.value
-     }
+  _handleChange(e, props) {
+    const flavor = {...this.state.flavor,
+      [e.target.name]: e.target.value
+    }
+    this.setState({ flavor });
+    if(e.target.name === 'backgroundColor') {
+      props.updateFlavorMutation({
+        variables: {
+          id: flavor.id,
+          name: flavor.name,
+          onTap: flavor.onTap,
+          backgroundColor: flavor.backgroundColor
+        }
+      });
+    }
+  }
 
-     props.updateFlavorMutation({
-       variables: {
-         id: updatedFlavor.id,
-         name: updatedFlavor.name,
-         backgroundColor: updatedFlavor.backgroundColor
-       }
-     });
-   }
+  _updateFlavor = function(props) {
+    let flavor = this.state.flavor;
 
-   _deleteFlavor = function(props) {
-     const id = props.flavor.id
-     props.deleteFlavorMutation({
-       variables: {
-         id
-       }
-     })
-   }
+    props.updateFlavorMutation({
+      variables: {
+        id: flavor.id,
+        name: flavor.name,
+        onTap: flavor.onTap,
+        backgroundColor: flavor.backgroundColor
+      }
+    });
+  }
+
+  _deleteFlavor = function(props) {
+    const id = props.flavor.id
+    props.deleteFlavorMutation({
+      variables: {
+        id
+      }
+    })
+  }
+
+  componentWillMount() {
+    this.setState({ flavor: this.props.flavor })
+  }
+
+  componentDidMount() {
+    const nameInput = document.querySelector(`.${this.state.flavor.id} .flavor__name`);
+    nameInput.addEventListener('keyup', debounce(this._updateFlavor.bind(null, this.props), 500));
+  }
 
   render() {
-    let cssClasses = `bg-${this.props.flavor.backgroundColor} flavor`
+    let cssClasses = `bg-${this.state.flavor.backgroundColor} flavor ${this.state.flavor.id}`
+
     return (
       <div className="flavor-container">
         <div className={cssClasses} >
@@ -45,7 +82,7 @@ class Flavor extends Component {
             <input
               name="name"
               type="text"
-              value={this.props.flavor.name}
+              value={this.state.flavor.name}
               onChange={(e) => this._handleChange(e, this.props)}
               placeholder="Flavor Name" />
           </div>
@@ -58,7 +95,7 @@ class Flavor extends Component {
                   <input
                     name="onTap"
                     type="checkbox"
-                    defaultChecked={this.props.flavor.onTap}
+                    defaultChecked={this.state.flavor.onTap}
                     onChange={this._toggleOnTap.bind(null, this.props)} />
                 </div>
             </div>
@@ -67,7 +104,7 @@ class Flavor extends Component {
                 Color
               </div>
               <div className="flavor__field__content">
-                <select name="backgroundColor" value={this.props.flavor.backgroundColor} onChange={(e) => this._handleChange(e, this.props)} >
+                <select name="backgroundColor" value={this.state.flavor.backgroundColor} onChange={(e) => this._handleChange(e, this.props)} >
                   <option value="pink">pink</option>
                   <option value="orange">orange</option>
                   <option value="yellow">yellow</option>
@@ -87,7 +124,6 @@ class Flavor extends Component {
             </div>
           </div>
         </div>
-        <div className="update-flavor" onClick={ (e) => this._handleChange(e, this.props) }>UPDATE</div>
       </div>
     );
   }

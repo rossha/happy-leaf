@@ -4,13 +4,29 @@ import Flavor from './Flavor'
 
 class FlavorList extends Component {
 
-  updateFlavor(key, updatedFlavor) {
-    const flavors = {...this.state.flavors};
-    flavors[key] = updatedFlavor;
-    this.setState({ flavors });
-  }
+  // constructor() {
+  //   super();
+  //   this.updateFlavor = this.updateFlavor.bind(this);
+  //   this.updateState = this.updateState.bind(this);
+  //
+  //   // Initial State
+  //   this.state = {
+  //     flavors: []
+  //   };
+  // }
+  //
+  // updateState(array) {
+  //   console.log(array);
+  //   this.setState({ flavors: array });
+  // }
+  //
+  // updateFlavor(key, updatedFlavor) {
+  //   const flavors = {...this.state.flavors};
+  //   flavors[key] = updatedFlavor;
+  //   this.setState({ flavors });
+  // }
 
-  _createFlavor = function(props) {
+  createFlavor(props) {
     console.log('create flavor');
     props.createFlavorMutation({
       variables: {
@@ -137,7 +153,7 @@ class FlavorList extends Component {
     return (
       <div className="flavorList">
         <h2 className="flavorList__title">Edit Flavors</h2>
-        <div onClick={() => this._createFlavor(this.props)} className="addFlavor b--white-90 b--dashed">&#43; Add Flavor</div>
+        <div onClick={() => this.createFlavor(this.props)} className="addFlavor b--white-90 b--dashed">&#43; Add Flavor</div>
         {flavorsToRender.map(flavor => (
           <Flavor key={flavor.id} flavor={flavor} />
         ))}

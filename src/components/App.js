@@ -17,10 +17,11 @@ class App extends Component {
         <Header />
         <div className='content'>
           <Switch>
+            <Route exact path='/' component={LandingPage}/>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/search' component={Search}/>
             <Route exact path='/loadData' component={LoadData}/>
-            <Route exact path='/' component={LandingPage}/>
+            <Route exact path='/admin' component={LandingPage}/>
             <Route exact path='/tapList' component={TapList}/>
             <Route exact path='/create' component={CreateFlavor}/>
           </Switch>

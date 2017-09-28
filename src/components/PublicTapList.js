@@ -2,18 +2,7 @@ import React, { Component } from 'react'
 import { graphql, gql } from 'react-apollo'
 import TapFlavor from './TapFlavor'
 
-class TapList extends Component {
-
-  // constructor() {
-  //   super();
-  //   this.updateFlavor = this.updateFlavor.bind(this);
-  //   this.updateState = this.updateState.bind(this);
-  //
-  //   // Initial State
-  //   this.state = {
-  //     flavors: []
-  //   };
-  // }
+class PublicTapList extends Component {
 
   render() {
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
 import { graphql, gql, compose } from 'react-apollo'
+import '../styles/login.css'
 
 class Login extends Component {
 
@@ -14,7 +15,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <h4 className='mv3'>{this.state.login ? 'Login' : 'Sign Up'}</h4>
+        <h4 className=''>{this.state.login ? 'Login' : 'Sign Up'}</h4>
         <div className='flex flex-column'>
           {!this.state.login &&
           <input
@@ -38,13 +39,13 @@ class Login extends Component {
         </div>
         <div className='flex mt3'>
           <div
-            className='pointer mr2 button'
+            className='button'
             onClick={() => this._confirm()}
           >
             {this.state.login ? 'login' : 'create account' }
           </div>
           <div
-            className='pointer button'
+            className='button'
             onClick={() => this.setState({ login: !this.state.login })}
           >
             {this.state.login ? 'need to create an account?' : 'already have an account?'}
