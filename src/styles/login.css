@@ -1,0 +1,104 @@
+.login {
+  margin: auto;
+  display: block;
+  width: 95%;
+}
+
+.login * {
+  color: #4A7628;
+}
+
+.login__header {
+  font-size: 30px;
+  text-transform: uppercase;
+  margin: 40px 0px 10px;
+  cursor: default;
+  color: white;
+}
+
+.login__form {
+  min-width: 100%;
+}
+
+.login__form__input {
+  font-size: 20px;
+  margin: 5px 0px;
+  padding: 8px;
+  width: 100%;
+  outline: none;
+  color: #4A7628;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  color: #4A7628;
+}
+
+.login__alert {
+  border: 2px solid #4A7628;
+  padding: 7px;
+  text-transform: uppercase;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 50px;
+  font-size: 13px;
+  margin: 5px 0px;
+  text-align: left;
+}
+
+.login__alert__message {
+  display: none;
+}
+
+.login__alert__message--mobile {
+  display: block;
+}
+
+.login__alert-span {
+  color: #63a70a;
+}
+
+.login__alert__logo {
+  max-height: 100%;
+  margin-right: 10px;
+}
+
+.button {
+  cursor: pointer;
+  border: 2px solid white;
+  color: white;
+  padding: 10px;
+  text-transform: uppercase;
+  background-image: url("../images/chalkboard.png");
+  margin: 0px 10px 0px 0px;
+}
+
+@media only screen and (min-device-width: 385px) and (min-width: 385px) {
+  .login__alert {
+    height: 60px;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (min-device-width: 528px) and (min-width: 528px) {
+  .login__alert {
+    justify-content: center;
+    text-align: center;
+    height: 40px;
+  }
+
+  .login__alert__message {
+    display: block;
+  }
+
+  .login__alert__message--mobile {
+    display: none;
+  }
+}
+
+@media only screen and (min-device-width: 775px) and (min-width: 775px) {
+  .login {
+    width: 70%;
+  }
+}
