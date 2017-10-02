@@ -29,10 +29,6 @@
   color: #4A7628;
 }
 
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-  color: #4A7628;
-}
-
 .login__alert {
   border: 2px solid #4A7628;
   padding: 7px;
@@ -55,8 +51,13 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   display: block;
 }
 
+.lowercase {
+  text-transform: lowercase;
+}
+
 .login__alert-span {
   color: #63a70a;
+  text-transform: uppercase;
 }
 
 .login__alert__logo {

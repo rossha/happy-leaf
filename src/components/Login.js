@@ -25,11 +25,11 @@ class Login extends Component {
         <div className="login__alert">
           <img alt="logo" className="login__alert__logo" src={logo} />
           <div className="login__alert__message">
-            This App is in Demo Mode. Test it using <span className="login__alert-span">U:</span> Admin <span className="login__alert-span">P:</span> Password
+            This App is in Demo Mode. Test it using <span className="lowercase"><span className="login__alert-span">U:</span> Admin <span className="login__alert-span">P:</span> Password</span>
           </div>
           <div className="login__alert__message--mobile">
             <div>This App is in Demo Mode. Test it using:</div>
-            <div><span className="login__alert-span">U:</span> Admin <span className="login__alert-span">P:</span> Password</div>
+            <div className="lowercase"><span className="login__alert-span">U:</span> Admin <span className="login__alert-span">P:</span> Password</div>
           </div>
         </div>
         <div className='login__form'>
