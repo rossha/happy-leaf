@@ -18,10 +18,11 @@ class TapFlavor extends Component {
   render() {
     let cssClasses = `bg-${this.props.flavor.backgroundColor} tap-flavor`
     const userId = localStorage.getItem(GC_USER_ID)
+    const path = this.props.path;
 
     return (
       <div className={cssClasses}>
-        { userId &&
+        { (userId && path !== '/') &&
         <div>
           <div className="tap-flavor__title w-80">
             <div className="tap-flavor__title__text">{this.props.flavor.name}</div>
@@ -38,7 +39,7 @@ class TapFlavor extends Component {
           </div>
         </div>
         }
-        { !userId &&
+        { (!userId || (userId && path === '/')) &&
         <div className="public-tap-flavor">
           <div className="tap-flavor__title w-100">
             <div className="tap-flavor__title__text">{this.props.flavor.name}</div>

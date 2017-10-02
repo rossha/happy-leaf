@@ -95,7 +95,7 @@ class Flavor extends Component {
                   <input
                     name="onTap"
                     type="checkbox"
-                    defaultChecked={this.state.flavor.onTap}
+                    checked={this.props.flavor.onTap}
                     onChange={this._toggleOnTap.bind(null, this.props)} />
                 </div>
             </div>
@@ -104,7 +104,7 @@ class Flavor extends Component {
                 Color
               </div>
               <div className="flavor__field__content">
-                <select name="backgroundColor" value={this.state.flavor.backgroundColor} onChange={(e) => this._handleChange(e, this.props)} >
+                <select name="backgroundColor" value={this.props.flavor.backgroundColor} onChange={(e) => this._handleChange(e, this.props)} >
                   <option value="pink">pink</option>
                   <option value="orange">orange</option>
                   <option value="yellow">yellow</option>

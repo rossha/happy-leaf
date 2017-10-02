@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
-import { GC_USER_ID } from '../constants'
+import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
 
 class Header extends Component {
 
@@ -9,30 +9,21 @@ class Header extends Component {
     const path = this.props.location.pathname;
     return (
       <div>
-      { userId &&
         <div>
           <div className='header flex w-100 justify-between nowrap'>
-            <h1 className='header__text w-100'>HAPPY LEAF ADMIN PORTAL</h1>
+            { userId && <div className='logout' onClick={() => {
+              localStorage.removeItem(GC_USER_ID)
+              localStorage.removeItem(GC_AUTH_TOKEN)
+              this.props.history.push(`/login`)
+            }}>logout</div> }
+            <h1 className='header__text w-100'>
+              { userId && "HAPPY LEAF ADMIN PORTAL" }
+              { (!userId && path === '/login') && "HAPPY LEAF ADMIN PORTAL" }
+              { (!userId && path !== '/login') && "HAPPY LEAF KOMBUCHA" }
+            </h1>
           </div>
           <div className='header__border-bottom'></div>
         </div>
-      }
-      { (!userId && path === '/login') &&
-        <div>
-          <div className='header flex w-100 justify-between nowrap'>
-            <h1 className='header__text w-100'>HAPPY LEAF ADMIN PORTAL</h1>
-          </div>
-          <div className='header__border-bottom'></div>
-        </div>
-      }
-      { (!userId && path !== '/login') &&
-        <div>
-          <div className='header flex w-100 justify-between nowrap'>
-            <h1 className='header__text w-100'>HAPPY LEAF KOMBUCHA</h1>
-          </div>
-          <div className='header__border-bottom'></div>
-        </div>
-      }
       </div>
     )
   }
