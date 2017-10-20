@@ -1,5 +1,5 @@
 # project: cj79aln991z1r01896fmy9mzk
-# version: 18
+# version: 19
 
 type Flavor implements Node {
   description: String
@@ -10,6 +10,7 @@ type Flavor implements Node {
   name: String!
   special: Boolean
   onTap: Boolean
+  tapIndex: Int
   updatedAt: DateTime!
 }
 

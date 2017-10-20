@@ -24,6 +24,10 @@ body * {
   cursor: pointer;
 }
 
+.admin__list {
+  width: 100%;
+}
+
 .public-taplist {
   padding: 0px 20px 50px;
 }
@@ -174,4 +178,10 @@ option {
 .bg-purple, option[value="purple"] {
   background-color: #CC8BFF;
   text-shadow: 1px 1px 2px #000000;
+}
+
+@media only screen and (min-device-width: 800px) and (min-width: 800px) {
+  .admin__list {
+    width: 50%;
+  }
 }
