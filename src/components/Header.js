@@ -17,7 +17,8 @@ class Header extends Component {
               this.props.history.push(`/login`)
             }}>logout</div> }
             <h1 className='header__text w-100'>
-              { userId && "HAPPY LEAF ADMIN PORTAL" }
+              { userId && path === '/' && "HAPPY LEAF KOMBUCHA" }
+              { userId && path !== '/' && "HAPPY LEAF ADMIN PORTAL" }
               { (!userId && path === '/login') && "HAPPY LEAF ADMIN PORTAL" }
               { (!userId && path !== '/login') && "HAPPY LEAF KOMBUCHA" }
             </h1>

@@ -27,15 +27,7 @@ class PublicTapList extends Component {
         }
       `,
       updateQuery: (previous, { subscriptionData }) => {
-        const newAllFlavors = [
-          subscriptionData.data.Flavor.node,
-          ...previous.allFlavors
-        ]
-        const result = {
-          ...previous,
-          allFlavors: newAllFlavors
-        }
-        return result
+        this.props.allFlavorsQuery.refetch()
       }
     })
   }
@@ -62,15 +54,6 @@ class PublicTapList extends Component {
       `,
       updateQuery: (previous, { subscriptionData }) => {
         this.props.allFlavorsQuery.refetch()
-        const updatedFlavorIndex = previous.allFlavors.findIndex(flavor => flavor.id === subscriptionData.data.Flavor.id)
-        const flavor = subscriptionData.data.Flavor
-        const newAllFlavors = previous.allFlavors.slice()
-        newAllFlavors[updatedFlavorIndex] = flavor
-        const result = {
-          ...previous,
-          allLinks: newAllFlavors
-        }
-        return result
       }
     })
   }
@@ -130,7 +113,7 @@ class PublicTapList extends Component {
 
 const ALL_FLAVORS_QUERY = gql`
   query AllFlavorsQuery {
-    allFlavors {
+    allFlavors(orderBy: tapIndex_ASC) {
       id
       createdAt
       name
